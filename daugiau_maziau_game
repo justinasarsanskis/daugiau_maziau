@@ -1,0 +1,30 @@
+from game_data import data
+from replit import clear
+from art import vs
+from art import logo2
+import random
+print(logo2)
+end_of_game = False
+score =0
+A = (random.choice(data))
+while end_of_game == False:
+	B = (random.choice(data))
+	if A==B:
+		B = (random.choice(data))
+	print(f"Įžymybė A: {A['name']}, the {A['description']} from {A['country']}. ")
+	print(vs)
+	print(f"Įžymybė B: {B['name']}, the {B['description']} from {B['country']}. ")
+	AA = A["follower_count"]
+	BB = B["follower_count"]
+	user_guess = input("Kuris turi daugiau sekėjų Instagrame? Įrašyk A arba B: \n").upper()
+	
+	if (AA > BB and user_guess == "A") or (AA < BB and user_guess == "B"):
+		score +=1
+		clear()
+		print(logo2)
+		print(f"Teisingas atsakymas. Tavo taškai: {score}")
+		A=B
+	else:
+		clear()
+		print(f"Deja atsakymas neteisingas.\nJūs surinkote {score} taškus. ")
+		end_of_game = True
